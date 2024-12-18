@@ -2,14 +2,15 @@ group 'com.bruno.native_admob_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
+    
     ext.kotlin_version = '1.5.31'
     repositories {
         google()
-        mavenCentral() // Replace jcenter with mavenCentral as jcenter is deprecated
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0' // Upgrade Gradle plugin
+        classpath 'com.android.tools.build:gradle:4.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -17,7 +18,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        mavenCentral() // Replace jcenter with mavenCentral
+        jcenter()
     }
 }
 
@@ -25,24 +26,21 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31 // Upgrade to a more recent compile SDK version
-    namespace 'com.bruno.native_admob_flutter' // Add the required namespace property
-
-    defaultConfig {
-        minSdkVersion 21 // Consider raising the min SDK for better compatibility
-        targetSdkVersion 31 // Match compile SDK
-    }
+    namespace 'com.bruno.native_admob_flutter'
+    compileSdkVersion 30
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
+    defaultConfig {
+        minSdkVersion 16
+    }
     lintOptions {
         disable 'InvalidPackage'
     }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Simplify kotlin stdlib version
-    implementation 'com.google.android.gms:play-services-ads:21.0.0' // Update to the latest Ads SDK version
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.gms:play-services-ads:20.2.0'
 }

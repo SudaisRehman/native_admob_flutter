@@ -2,6 +2,8 @@ group 'com.bruno.native_admob_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
+       namespace 'com.bruno.native_admob_flutter'
+    
     ext.kotlin_version = '1.5.31'
     repositories {
         google()
